@@ -29,7 +29,7 @@ public class Lightning : MonoBehaviour {
 		public void Hit(){
 		
 			
-			particleSystem.Emit(500);
+		//;	particleSystem.Emit(500);
 			Destroy(gameObject);
 		
 		
@@ -45,7 +45,7 @@ public class Lightning : MonoBehaviour {
 		
 		if(c.gameObject.tag == "floor"){
 			Debug.Log("floor");
-			particleSystem.Emit(1000);	
+			//particleSystem.Emit(1000);	
 			//gameObject.renderer.enabled = false;
 			//Physics.IgnoreCollision(c.collider,gameObject.collider);
 			Destroy(gameObject,5);
