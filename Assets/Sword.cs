@@ -15,7 +15,7 @@ public class Sword : MonoBehaviour {
 	}
 
 
-	/*
+	
 	void OnCollisionEnter(Collision c){
 		Debug.Log("hit");
 		if(c.gameObject.tag == "Enemy"){
@@ -27,7 +27,7 @@ public class Sword : MonoBehaviour {
 		}
 	}
 	 
-	 */
+	 
 
 
 }

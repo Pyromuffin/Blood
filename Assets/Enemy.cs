@@ -123,7 +123,7 @@ public class Enemy : MonoBehaviour {
 			Debug.Log("enemy hit");
 			particleSystem.Emit(500);
 			health -= 20;
-			rigidbody.velocity= (-transform.forward + transform.up) * 1;
+			rigidbody.velocity= (-transform.forward + transform.up) * 3;
 			rigidbody.useGravity = true;
 			hitTimer = Time.time;
 		}
@@ -140,6 +140,8 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision c){
+	
+		
 		
 		if(c.collider.gameObject.tag == "sword" && c.gameObject.GetComponent<Weapons>().attacking){
 			Hit();
@@ -147,11 +149,11 @@ public class Enemy : MonoBehaviour {
 		}
 		
 		
-		if(c.gameObject.tag == "Player"){
+		else if(c.gameObject.tag == "Player"){
 			attackTimer = 0;
 			c.gameObject.GetComponent<Weapons>().health -= 5;
 			rigidbody.velocity= -transform.forward * 3;
-			//Debug.Log("hit");
+			Debug.Log("hit lady");
 		}
 		
 	}
