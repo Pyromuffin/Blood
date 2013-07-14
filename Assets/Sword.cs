@@ -15,17 +15,19 @@ public class Sword : MonoBehaviour {
 	}
 
 
-
+	/*
 	void OnCollisionEnter(Collision c){
 		Debug.Log("hit");
-		if(c.gameObject.tag == "Enemy")
+		if(c.gameObject.tag == "Enemy"){
+			Debug.Log("enemy");
 			if(player.GetComponent<Weapons>().attacking){
 				Debug.Log("sword hit");		
 				c.gameObject.GetComponent<Enemy>().Hit();
+			}
 		}
-		
 	}
-
+	 
+	 */
 
 
 }

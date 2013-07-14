@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour {
 	public enum EnemyType{Cramps, Fatigue, Headache};
 	public EnemyType type;
 	public float hitTimer = 0;
+	public GameObject lightning;
 	
 	
 	// Use this for initialization
@@ -29,12 +30,48 @@ public class Enemy : MonoBehaviour {
 		
 		
 		
-		if(health < 0){
+		if(health <= 0){
 			Die();	
 			
 		}
 		
-		if(type == EnemyType.Cramps){
+		
+		
+		if (type ==  EnemyType.Headache){
+			
+			
+			transform.Rotate(0,0,50 * Time.deltaTime);	
+			if(hitTimer < 0){
+				GameObject bolt = GameObject.Instantiate(lightning,gameObject.transform.position, gameObject.transform.rotation) as GameObject;	
+				hitTimer += 2;
+				//Physics.IgnoreCollision(bolt.collider, collider);
+				Destroy(bolt, 10);
+				
+			}
+			hitTimer -= Time.deltaTime;
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		else if(type == EnemyType.Cramps){
 		
 			if(hitTimer < Time.time + 2)
 				rigidbody.useGravity = false;
@@ -91,11 +128,20 @@ public class Enemy : MonoBehaviour {
 			hitTimer = Time.time;
 		}
 		
+		if 	(type == EnemyType.Headache){
+			Debug.Log("enemy hit");
+			particleSystem.Emit(500);
+			health -= 20;
+			//rigidbody.velocity= (-transform.forward + transform.up) * 1;
+			//rigidbody.useGravity = true;
+			//hitTimer = Time.time;
+		}
+		
 	}
 
 	void OnCollisionEnter(Collision c){
 		
-		if(c.collider.gameObject.tag == "Sword" && c.gameObject.GetComponent<Weapons>().attacking){
+		if(c.collider.gameObject.tag == "sword" && c.gameObject.GetComponent<Weapons>().attacking){
 			Hit();
 			Debug.Log("hit");	
 		}
@@ -104,7 +150,7 @@ public class Enemy : MonoBehaviour {
 		if(c.gameObject.tag == "Player"){
 			attackTimer = 0;
 			c.gameObject.GetComponent<Weapons>().health -= 5;
-			rigidbody.velocity= -transform.forward * 1;
+			rigidbody.velocity= -transform.forward * 3;
 			//Debug.Log("hit");
 		}
 		

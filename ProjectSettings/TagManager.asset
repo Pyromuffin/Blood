@@ -5,6 +5,7 @@ TagManager:
   tags:
   - Enemy
   - sword
+  - floor
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   User Layer 8: Character controller
   User Layer 9: Lady
   User Layer 10: hair
-  User Layer 11: 
+  User Layer 11: Enemy
   User Layer 12: 
   User Layer 13: 
   User Layer 14: 
