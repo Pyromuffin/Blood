@@ -7,17 +7,33 @@ public class Weapons : MonoBehaviour {
 	public GameObject sword;
 	private Vector3 startPos;
 	public float velocityMag;
+	public float health = 100;
+	private Renderer[] renderers;
+	public bool attacking = false;
+	public static GameObject Lady;
 	
 	// Use this for initialization
 	void Start () {
+		Lady = gameObject;
 		readyTimer = 0;
+		renderers = gameObject.GetComponentsInChildren<Renderer>();
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+		
+		
 		velocityMag = rigidbody.velocity.magnitude;
+		
+		if(health <= 0)
+			Die();
+		
+		health = Mathf.Max(5, health - 1 * Time.deltaTime);
+		
+		foreach(Renderer r in renderers)
+			r.material.SetFloat("_Outline",health/10000);
 		
 		
 		if(Input.GetButtonDown("Fire1") && ready){
@@ -46,13 +62,25 @@ public class Weapons : MonoBehaviour {
 		}
 		
 		if (animation.IsPlaying("swing sword") ){
+			attacking = true;
 			sword.GetComponentInChildren<ParticleSystem>().emissionRate = 1000;
 			transform.Translate(0,0,4 * Time.deltaTime);	
-		}
+		}else
+			attacking = false;
 			
 		if(Time.time > readyTimer + readySpeed){
 			ready = true;
 			sword.GetComponentInChildren<ParticleSystem>().emissionRate = 10;
 		}
 	}
+
+
+
+	void Die(){
+		Destroy(gameObject);	
+		
+		
+	}
+
+
 }
