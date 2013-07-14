@@ -154,7 +154,7 @@ function UpdateSmoothedMovementDirection ()
 	var targetDirection = h * right + v * forward;
 	
 	// Grounded controls
-	if (grounded)
+	if (grounded || jumping)
 	{
 		// Lock camera for short period when transitioning moving & standing still
 		lockCameraTimer += Time.deltaTime;
@@ -213,6 +213,7 @@ function UpdateSmoothedMovementDirection ()
 			walkTimeStart = Time.time;
 	}
 	// In air controls
+	/*
 	else
 	{
 		// Lock camera while in air
@@ -222,7 +223,7 @@ function UpdateSmoothedMovementDirection ()
 		if (isMoving)
 			inAirVelocity += targetDirection.normalized * Time.deltaTime * inAirControlAcceleration;
 	}
-	
+	*/
 
 		
 }
