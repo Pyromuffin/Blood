@@ -25,7 +25,7 @@ public class Weapons : MonoBehaviour {
 			animation.Stop("idle");
 			gameObject.animation.Play("swing sword");
 			readyTimer = Time.time;
-			startPos = transform.position;
+			//startPos = transform.position;
 			
 			
 		}
