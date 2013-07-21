@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour {
 	public EnemyType type;
 	public float hitTimer = 0;
 	public GameObject lightning;
+	public AudioClip hit,cut1,cut2,dead;
+	public GameObject Dead;
 	
 	
 	// Use this for initialization
@@ -56,19 +58,7 @@ public class Enemy : MonoBehaviour {
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 		
 		
 		else if(type == EnemyType.Cramps){
@@ -83,7 +73,7 @@ public class Enemy : MonoBehaviour {
 				rigidbody.WakeUp();
 				
 				
-				if(attackTimer > 3){
+				if(attackTimer > 1){
 					rigidbody.WakeUp();
 					particleSystem.emissionRate = 100;
 					rigidbody.constraints = RigidbodyConstraints.None;
@@ -94,7 +84,7 @@ public class Enemy : MonoBehaviour {
 					
 				
 				
-				else if(attackTimer > 1){
+				else if(attackTimer > .5){
 					particleSystem.emissionRate = 50;
 					//animation.Play("shake");
 				}
@@ -110,10 +100,8 @@ public class Enemy : MonoBehaviour {
 	}
 	
 	void Die(){
-		particleSystem.gravityModifier = 0;
-		particleSystem.startSpeed = 5;
-		particleSystem.Emit(1000);
-		GameObject.Instantiate(blood,transform.position,Quaternion.identity);
+		
+		GameObject.Instantiate(Dead,transform.position,Quaternion.identity);
 		Destroy(gameObject);
 		
 	}
@@ -121,7 +109,7 @@ public class Enemy : MonoBehaviour {
 	public void Hit(){
 		if 	(type == EnemyType.Cramps){
 			Debug.Log("enemy hit");
-			particleSystem.Emit(500);
+			particleSystem.Emit(100);
 			health -= 20;
 			rigidbody.velocity= (-transform.forward + transform.up) * 3;
 			rigidbody.useGravity = true;
@@ -130,7 +118,7 @@ public class Enemy : MonoBehaviour {
 		
 		if 	(type == EnemyType.Headache){
 			Debug.Log("enemy hit");
-			particleSystem.Emit(500);
+			particleSystem.Emit(100);
 			health -= 20;
 			//rigidbody.velocity= (-transform.forward + transform.up) * 1;
 			//rigidbody.useGravity = true;
@@ -143,9 +131,13 @@ public class Enemy : MonoBehaviour {
 	
 		
 		
-		if(c.collider.gameObject.tag == "sword" && c.gameObject.GetComponent<Weapons>().attacking){
+		if(c.gameObject.tag == "Player" && c.gameObject.GetComponent<Weapons>().attacking){
 			Hit();
-			Debug.Log("hit");	
+			Debug.Log("hit");
+			if(Random.Range(0,2) == 1)
+				audio.PlayOneShot( cut1);
+			else
+				audio.PlayOneShot(cut2);
 		}
 		
 		
@@ -154,6 +146,7 @@ public class Enemy : MonoBehaviour {
 			c.gameObject.GetComponent<Weapons>().health -= 5;
 			rigidbody.velocity= -transform.forward * 3;
 			Debug.Log("hit lady");
+			audio.PlayOneShot(hit);
 		}
 		
 	}

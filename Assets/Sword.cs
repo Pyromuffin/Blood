@@ -6,7 +6,9 @@ public class Sword : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		
+		var box = gameObject.AddComponent<BoxCollider>();
+		box.size =  new Vector3(3,3,1);
 	}
 	
 	// Update is called once per frame

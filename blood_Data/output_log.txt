@@ -15,27 +15,7 @@ Platform assembly: C:\Users\Kelly\Documents\GitHub\Blood\blood_Data\Managed\Asse
 Loading C:\Users\Kelly\Documents\GitHub\Blood\blood_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\Kelly\Documents\GitHub\Blood\blood_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
 Loading C:\Users\Kelly\Documents\GitHub\Blood\blood_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
-- Completed reload, in  0.028 seconds
-desktop: 1920x1080 120Hz; virtual: 1920x1080 at 0,0
+- Completed reload, in  0.039 seconds
+desktop: 1920x1080 120Hz; virtual: 3840x1080 at -1920,0
 <RI> Initializing input.
 <RI> Input initialized.
-The character you would like to control doesn't have animations. Moving her might look weird.
- 
-(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
-
-No idle animation found. Turning off animations.
- 
-(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
-
-No walk animation found. Turning off animations.
- 
-(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
-
-No run animation found. Turning off animations.
- 
-(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
-
-No jump animation found and the character has canJump enabled. Turning off animations.
- 
-(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
-

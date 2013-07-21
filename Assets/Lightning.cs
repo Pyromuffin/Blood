@@ -45,7 +45,7 @@ public class Lightning : MonoBehaviour {
 		
 		if(c.gameObject.tag == "floor"){
 			//Debug.Log("floor");
-			particleSystem.Emit(1000);	
+			//particleSystem.Emit(10);	
 			//gameObject.renderer.enabled = false;
 			//Physics.IgnoreCollision(c.collider,gameObject.collider);
 			Destroy(gameObject,5);

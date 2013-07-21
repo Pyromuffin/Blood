@@ -26,11 +26,11 @@ public class Intro : MonoBehaviour {
 		if(stage == 1)
 			GUILayout.Label(two, GUILayout.MaxHeight(512) );
 		if(stage == 2)
-			GUILayout.Label(three);
+			GUILayout.Label(three, GUILayout.MaxHeight(512));
 		if(stage == 3)
 			GUILayout.Label(four, GUILayout.MaxHeight(512) );
 		if(stage == 4)
-			Application.LoadLevel("level 1b");
+			Application.LoadLevel("final level 1");
 		
 		
 	}

@@ -11,6 +11,9 @@ public class Weapons : MonoBehaviour {
 	private Renderer[] renderers;
 	public bool attacking = false;
 	public static GameObject Lady;
+	public AudioClip slice, walkSound, jumpSound;
+	public bool walkSoundTime;
+	public float walkSoundTimer;
 	
 	// Use this for initialization
 	void Start () {
@@ -23,6 +26,11 @@ public class Weapons : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+		
+		if(Input.GetButtonDown("Jump")){
+			audio.PlayOneShot(walkSound);	
+			
+		}
 		
 		
 		velocityMag = rigidbody.velocity.magnitude;
@@ -37,6 +45,7 @@ public class Weapons : MonoBehaviour {
 		
 		
 		if(Input.GetButtonDown("Fire1") && ready){
+			audio.PlayOneShot(slice,.2f);
 			ready = false;
 			animation.Stop("idle");
 			gameObject.animation.Play("swing sword");
@@ -46,20 +55,28 @@ public class Weapons : MonoBehaviour {
 			
 		}
 		
+		
+		
 		if ( Mathf.Abs(Input.GetAxis("Horizontal")) > .1f ){
+			walkSoundTimer = Time.time;
 			animation.Stop("idle");
 			animation.Blend("run");	
 			animation.Blend("arm jog",.3f);
 		}
 		else{
+			//walkSoundTimer = Time.time;
 			if(!animation.IsPlaying("swing sword") )
 			{
 				animation.Blend("idle",1f,1);
 			}
+			//animation.Stop("run");
 			animation.Blend("run",0,1);
 			animation.Stop("arm jog");
 			
 		}
+		
+		if(walkSoundTimer + .2f < Time.time)
+			animation.Stop("run");
 		
 		if (animation.IsPlaying("swing sword") ){
 			attacking = true;
@@ -74,13 +91,24 @@ public class Weapons : MonoBehaviour {
 		}
 	}
 
-
+	
+	
+	public void Walk(){
+		audio.PlayOneShot(walkSound);
+		
+	}
 
 	void Die(){
+		
+		
+		Application.LoadLevel("final level 1");
 		Destroy(gameObject);	
 		
 		
 	}
-
-
+	
+	
+	
+	
+	
 }

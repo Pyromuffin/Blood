@@ -184,9 +184,10 @@ GameObject:
   - 54: {fileID: 5400000}
   - 199: {fileID: 19900000}
   - 198: {fileID: 19800000}
+  - 82: {fileID: 8200000}
   m_Layer: 11
   m_Name: Headache
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -313,8 +314,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100020}
-  m_LocalRotation: {x: .180907652, y: .745114923, z: -.50512588, w: -.396136522}
-  m_LocalPosition: {x: 25.4825096, y: 10.5101519, z: -28.6214466}
+  m_LocalRotation: {x: .264906377, y: .913595796, z: -.247652382, w: .183944702}
+  m_LocalPosition: {x: 1.13813472, y: 6.05532789, z: -2.12083888}
   m_LocalScale: {x: 1, y: 1, z: -1}
   m_Children:
   - {fileID: 400012}
@@ -596,6 +597,64 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.57999992, y: 3.16000009, z: 3.38000011}
   m_Center: {x: 0, y: .850000024, z: -.949999988}
+--- !u!82 &8200000
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100020}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -607,7 +666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47b5607903ac66849890894bf4b8488d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 60
+  health: 120
   engageDistance: 10
   attackTimer: 0
   explosionForce: 1
@@ -615,6 +674,11 @@ MonoBehaviour:
   type: 2
   hitTimer: 0
   lightning: {fileID: 100006, guid: b208480f8617f77408409e90088ab3e6, type: 2}
+  hit: {fileID: 8300000, guid: 56cc384bb3a573d4d86fd20c876782d2, type: 3}
+  cut1: {fileID: 8300000, guid: 50a3860a4eaee9a41a38ab2f77b63e10, type: 3}
+  cut2: {fileID: 8300000, guid: 39f8370836947fc4590d2deeb31b9c07, type: 3}
+  dead: {fileID: 8300000, guid: 5062646d67941bb43beb3dec40d619ed, type: 3}
+  Dead: {fileID: 100000, guid: 8ab3c52d4d0118a4780100d7d2e83e1b, type: 2}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -851,7 +915,7 @@ ParticleSystem:
       minMaxState: 0
     gravityModifier: 1
     inheritVelocity: .75
-    maxNumParticles: 100
+    maxNumParticles: 1000
   ShapeModule:
     serializedVersion: 2
     enabled: 1
@@ -866,7 +930,7 @@ ParticleSystem:
     m_Mesh: {fileID: 0}
     randomDirection: 1
   EmissionModule:
-    enabled: 0
+    enabled: 1
     m_Type: 0
     rate:
       scalar: 10
@@ -1633,8 +1697,8 @@ ParticleSystem:
     range: {x: 0, y: 1}
   CollisionModule:
     enabled: 1
-    type: 1
-    plane0: {fileID: 0}
+    type: 0
+    plane0: {fileID: 400000, guid: d20ece175e1364543be9791182881b9a, type: 2}
     plane1: {fileID: 0}
     plane2: {fileID: 0}
     plane3: {fileID: 0}
